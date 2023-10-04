@@ -15,7 +15,7 @@ import member.Admin;
 import member.User;
 
 public class WelcomeBookMarket {
-	static final int NUM_BOOK = 4; // 도서 개수
+	static final int NUM_BOOK = 3; // 도서 개수
 	static final int NUM_ITEM = 8; // 도서 정보의 개수
 
 	static Cart cart = new Cart();
@@ -50,7 +50,7 @@ public class WelcomeBookMarket {
 			menuIntroduction();
 
 			try {
-				System.out.print("메뉴 번호를 선택해주세요 ");
+				System.out.print("메뉴 번호를 선택해주세요. ");
 				numberSelection = input.nextInt();
 
 				if (numberSelection < 1 || numberSelection > 9) {
@@ -107,6 +107,7 @@ public class WelcomeBookMarket {
 				quit = true;
 			}
 		}
+		
 	}
 
 	public static void menuIntroduction() {
@@ -137,14 +138,14 @@ public class WelcomeBookMarket {
 		// System.out.println("장바구니 비우기 ");
 		if (cart.cartCount == 0) {
 			// System.out.println("장바구니에 항목이 없습니다");
-			throw new CartException("장바구니에 항목이 없습니다");
+			throw new CartException("장바구니에 항목이 없습니다.");
 		} else {
 			System.out.println("장바구니에 모든 항목을 삭제하겠습니까? Y | N");
 			Scanner input = new Scanner(System.in);
 			String str = input.nextLine();
 
 			if (str.toUpperCase().equals("Y") || str.toUpperCase().equals("y")) {
-				System.out.println("장바구니에 모든 항목을 삭제했습니다");
+				System.out.println("장바구니에 모든 항목을 삭제했습니다.");
 				cart.deleteBook();
 			}
 		}
@@ -160,7 +161,7 @@ public class WelcomeBookMarket {
 
 		while (!quit) {
 			Scanner input = new Scanner(System.in);
-			System.out.print("장바구니에 추가할 도서의 ID를 입력하세요 :");
+			System.out.print("장바구니에 추가할 도서의 ID를 입력하세요. :");
 			String inputStr = input.nextLine();
 
 			boolean flag = false; // 일치여부
@@ -191,7 +192,7 @@ public class WelcomeBookMarket {
 				}
 				quit = true;
 			} else
-				System.out.println("다시 입력해 주세요");
+				System.out.println("다시 입력해 주세요. ");
 		}
 	}
 
@@ -203,12 +204,12 @@ public class WelcomeBookMarket {
 		// System.out.println("6.장바구니의 항목 삭제하기 ");
 		if (cart.cartCount == 0) {
 			// System.out.println("장바구니에 항목이 없습니다");
-			throw new CartException("장바구니에 항목이 없습니다");
+			throw new CartException("장바구니에 항목이 없습니다.");
 		} else {
 			menuCartItemList();
 			boolean quit = false;
 			while (!quit) {
-				System.out.println("장바구니에서 삭제할 도서의 ID를 입력하세요 :");
+				System.out.println("장바구니에서 삭제할 도서의 ID를 입력하세요. :");
 				Scanner input = new Scanner(System.in);
 				String str = input.nextLine();
 				boolean flag = false;
@@ -231,7 +232,7 @@ public class WelcomeBookMarket {
 					}
 					quit = true;
 				} else {
-					System.out.println("다시 입력해주세요");
+					System.out.println("다시 입력해주세요. ");
 				}
 			}
 		}
@@ -240,24 +241,24 @@ public class WelcomeBookMarket {
 	public static void menuCartBill() throws CartException {
 		// System.out.println("7.영수증 표시하기 ");
 		if (cart.cartCount == 0) {
-			System.out.println("장바구니에 항목이 없습니다");
-			throw new CartException("장바구니에 항목이 없습니다");
+			System.out.println("장바구니에 항목이 없습니다.");
+			throw new CartException("장바구니에 항목이 없습니다.");
 		} else {
 			System.out.println("배송받을 분은 고객정보와 같습니까? Y | N");
 			Scanner input = new Scanner(System.in);
 			String str = input.nextLine();
 
 			if (str.toUpperCase().equals("Y") || str.toUpperCase().equals("y")) {
-				System.out.print("배송지를 입력해주세요");
+				System.out.print("배송지를 입력해주세요.");
 				String address = input.nextLine();
 				// 주문 처리 후 영수증 출력 메서드 호출
 				printBill(user.getName(), String.valueOf(user.getPhone()), address);
 			} else {
-				System.out.print("배송받을 고객명을 입력하세요");
+				System.out.print("배송받을 고객명을 입력하세요.");
 				String name = input.nextLine();
-				System.out.print("배송받을 고객의 연락처를 입력하세요");
+				System.out.print("배송받을 고객의 연락처를 입력하세요.");
 				String phone = input.nextLine();
-				System.out.print("배송받을 고객의 배송지를 입력하세요");
+				System.out.print("배송받을 고객의 배송지를 입력하세요.");
 				String address = input.nextLine();
 				// 주문 처리 후 영수증 출력 메서드 호출
 				printBill(name, phone, address);
@@ -280,7 +281,7 @@ public class WelcomeBookMarket {
 
 	// 관리자 로그인 정보 확인 메서드
 	public static void menuAdminLogin() {
-		System.out.println("관리자 정보를 입력하세요");
+		System.out.println("관리자 정보를 입력하세요.");
 
 		Scanner input = new Scanner(System.in);
 		System.out.print("아이디 : ");
@@ -425,5 +426,6 @@ public class WelcomeBookMarket {
 			System.out.println(e);
 		}
 
+		
 	}
 }
